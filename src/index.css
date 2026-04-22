@@ -1,0 +1,458 @@
+@import "tailwindcss";
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+@theme {
+  --color-dark-900: #0F0F13;
+  --color-dark-800: #18181D;
+  --color-dark-700: #26262D;
+  --color-dark-600: #35353F;
+  --color-brand-500: #FF4500;
+  --color-brand-600: #E03C00;
+  --color-brand-400: #FF6A33;
+
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-dark-900);
+  color: #E5E7EB;
+  margin: 0;
+  overflow: hidden;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+}
+
+/* ============================================
+   Custom Scrollbar
+   ============================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #35353F;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4B5563;
+}
+
+/* ============================================
+   Markdown Styles — Base
+   ============================================ */
+.markdown-body {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  min-width: 0;
+}
+
+/* ============================================
+   Markdown Styles — Headings (h1–h6)
+   ============================================ */
+.markdown-body h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #F9FAFB;
+  line-height: 1.2;
+}
+
+.markdown-body h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #F3F4F6;
+  line-height: 1.3;
+}
+
+.markdown-body h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #E5E7EB;
+  line-height: 1.4;
+}
+
+.markdown-body h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #D1D5DB;
+}
+
+.markdown-body h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #D1D5DB;
+}
+
+.markdown-body h6 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #9CA3AF;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   Markdown Styles — Paragraphs & Line Breaks
+   ============================================ */
+.markdown-body p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+  color: #D1D5DB;
+}
+
+.markdown-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================
+   Markdown Styles — Text Formatting
+   Italic, Bold, Bold-Italic, Strikethrough
+   ============================================ */
+.markdown-body em {
+  font-style: italic;
+  color: #E5E7EB;
+}
+
+.markdown-body strong {
+  font-weight: 700;
+  color: #F9FAFB;
+}
+
+.markdown-body strong em,
+.markdown-body em strong {
+  font-weight: 700;
+  font-style: italic;
+  color: #F9FAFB;
+}
+
+.markdown-body del,
+.markdown-body s {
+  text-decoration: line-through;
+  color: #9CA3AF;
+}
+
+/* ============================================
+   Markdown Styles — Lists
+   Unordered, Ordered, Nested
+   ============================================ */
+.markdown-body ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-body ul li {
+  margin-bottom: 0.5rem;
+  color: #D1D5DB;
+}
+
+.markdown-body ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-body ol li {
+  margin-bottom: 0.5rem;
+  color: #D1D5DB;
+}
+
+/* Nested lists */
+.markdown-body ul ul,
+.markdown-body ol ol,
+.markdown-body ul ol,
+.markdown-body ol ul {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   Markdown Styles — Task List (Checkboxes)
+   ============================================ */
+.markdown-body input[type="checkbox"] {
+  margin-right: 0.5rem;
+  accent-color: #FF4500;
+}
+
+.markdown-body li:has(> input[type="checkbox"]) {
+  list-style: none;
+  margin-left: -1.5rem;
+}
+
+/* ============================================
+   Markdown Styles — Links
+   ============================================ */
+.markdown-body a {
+  color: #FF4500;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.markdown-body a:hover {
+  color: #E03C00;
+}
+
+/* ============================================
+   Markdown Styles — Images
+   ============================================ */
+.markdown-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
+
+/* ============================================
+   Markdown Styles — Blockquotes
+   Including nested blockquotes
+   ============================================ */
+.markdown-body blockquote {
+  border-left: 4px solid #FF4500;
+  padding: 1rem;
+  margin: 1rem 0;
+  color: #9CA3AF;
+  font-style: italic;
+  background-color: #18181D;
+  border-radius: 0.25rem;
+}
+
+.markdown-body blockquote p {
+  margin-bottom: 0.5rem;
+}
+
+.markdown-body blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Nested blockquotes */
+.markdown-body blockquote blockquote {
+  margin-top: 0.75rem;
+  border-left-color: #E03C00;
+  background-color: #0F0F13;
+}
+
+/* ============================================
+   Markdown Styles — Inline Code
+   ============================================ */
+.markdown-body code {
+  background-color: #26262D;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: #FF4500;
+  border: 1px solid #35353F;
+}
+
+/* ============================================
+   Markdown Styles — Code Blocks
+   ============================================ */
+.markdown-body pre {
+  background-color: #18181D;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: #E5E7EB;
+  border: 1px solid #35353F;
+  margin: 1rem 0;
+  position: relative;
+}
+
+.markdown-body pre code {
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+  border: none;
+}
+
+/* ============================================
+   Markdown Styles — Horizontal Rules
+   ============================================ */
+.markdown-body hr {
+  border: none;
+  border-top: 2px solid #35353F;
+  margin: 2rem 0;
+}
+
+/* ============================================
+   Markdown Styles — Tables
+   ============================================ */
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid #35353F;
+}
+
+.markdown-body thead {
+  background-color: #26262D;
+}
+
+.markdown-body th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #F9FAFB;
+  border-bottom: 2px solid #35353F;
+}
+
+.markdown-body td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #35353F;
+  color: #D1D5DB;
+}
+
+.markdown-body tbody tr:hover {
+  background-color: #18181D;
+}
+
+.markdown-body tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ============================================
+   Markdown Styles — Footnotes
+   ============================================ */
+.markdown-body sup {
+  font-size: 0.75rem;
+  vertical-align: super;
+}
+
+.markdown-body sup a {
+  text-decoration: none;
+  color: #FF4500;
+  font-weight: 600;
+}
+
+.markdown-body .footnotes {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #35353F;
+  font-size: 0.875rem;
+}
+
+.markdown-body .footnotes ol {
+  padding-left: 1.25rem;
+}
+
+/* ============================================
+   Markdown Styles — Collapsible Sections
+   <details> / <summary>
+   ============================================ */
+.markdown-body details {
+  margin: 1rem 0;
+  border: 1px solid #35353F;
+  border-radius: 0.5rem;
+  background-color: #18181D;
+}
+
+.markdown-body summary {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  user-select: none;
+  color: #F9FAFB;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.markdown-body summary:hover {
+  background-color: #26262D;
+}
+
+.markdown-body summary::marker {
+  content: '';
+}
+
+.markdown-body summary::before {
+  content: '\25B6'; /* ▶ */
+  display: inline-block;
+  transition: transform 0.2s;
+  color: #FF4500;
+}
+
+.markdown-body details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.markdown-body details > *:not(summary) {
+  padding: 0 1rem 1rem 1rem;
+}
+
+.markdown-body details ol,
+.markdown-body details ul {
+  padding-left: 2.5rem;
+}
+
+/* ============================================
+   Markdown Styles — HTML Embeds
+   Custom styled div blocks
+   ============================================ */
+.markdown-body .html-embed {
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+}
+
+/* ============================================
+   MathJax — Math formula styling
+   ============================================ */
+.markdown-body mjx-container {
+  color: #E5E7EB !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.markdown-body mjx-container[display="true"] {
+  margin: 1rem 0 !important;
+  padding: 0.5rem 0;
+}
+
+.markdown-body mjx-container svg {
+  max-width: 100%;
+}
+
+/* ============================================
+   Highlight.js — Dark theme overrides
+   ============================================ */
+.hljs {
+  background: transparent !important;
+  color: #E5E7EB !important;
+}
+
+/* ============================================
+   Custom Animations
+   ============================================ */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 1.5s linear infinite;
+}
