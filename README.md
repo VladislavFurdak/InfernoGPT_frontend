@@ -2,6 +2,12 @@
 
 A Next.js chat dashboard that talks to a research agent backend and persists conversations in Supabase. Supports streaming research runs, Markdown + LaTeX rendering, code highlighting, and a simple admin/user auth model.
 
+## Screenshots
+
+![Chat dashboard](screen1.png)
+
+![Research run](screen2.png)
+
 ## Tech stack
 
 - **Next.js 16** (App Router) + **React 19**
